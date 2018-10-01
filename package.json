@@ -1,0 +1,70 @@
+{
+  "name": "news-image-proxy",
+  "version": "0.1.0",
+  "description": "Ournet news image proxy",
+  "main": "./lib/app.js",
+  "private": true,
+  "scripts": {
+    "start": "node ./lib/app.js",
+    "dev": "npm run tsc && node ./lib/app.js",
+    "pretest": "npm run clean && npm run tsc",
+    "test": "ava --no-cache --verbose  ./lib/*.test.js ./lib/**/*.test.js",
+    "posttest": "npm run clean-test-code",
+    "tsc": "tsc",
+    "tscw": "tsc -w",
+    "preversion": "npm run tsc",
+    "postversion": "git push --follow-tags",
+    "prepublish": "npm run tsc && npm run clean-test-code",
+    "clean": "rimraf ./lib",
+    "clean-test-code": "rimraf ./lib/**/*.test.js && rimraf ./lib/*.test.js",
+    "watch": "npm-watch start"
+  },
+  "watch": {
+    "start": {
+      "patterns": [
+        "lib"
+      ],
+      "extensions": "js",
+      "quiet": true,
+      "legacyWatch": true,
+      "delay": 2000
+    }
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ournet/news-image-proxy.git"
+  },
+  "keywords": [
+    "ournet",
+    "news-image-proxy",
+    "proxy"
+  ],
+  "author": "Dumitru Cantea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ournet/news-image-proxy/issues"
+  },
+  "homepage": "https://github.com/Ournet/news-image-proxy#readme",
+  "devDependencies": {
+    "@types/express": "^4.0.35",
+    "@types/got": "^8.3.4",
+    "@types/node": "^8.x.x",
+    "@types/sharp": "^0.17.10",
+    "@types/winston": "^2.4.4",
+    "npm-watch": "^0.4.0",
+    "rimraf": "^2.6.2",
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "cors": "^2.8.4",
+    "debug": "^3.1.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "got": "^9.2.2",
+    "sharp": "^0.20.8",
+    "winston": "^3.1.0"
+  }
+}
