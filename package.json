@@ -49,23 +49,22 @@
   },
   "homepage": "https://github.com/Ournet/news-image-proxy#readme",
   "devDependencies": {
-    "@types/express": "^4.0.35",
-    "@types/got": "^8.3.4",
-    "@types/node": "^8.x.x",
-    "@types/sharp": "^0.17.10",
-    "@types/winston": "^2.4.4",
+    "@types/express": "^4.16.0",
+    "@types/got": "^9.2.0",
+    "@types/node": "^10.12.7",
+    "@types/sharp": "^0.21.0",
     "npm-watch": "^0.4.0",
     "rimraf": "^2.6.2",
-    "typescript": "latest"
+    "typescript": "3.1.6"
   },
   "dependencies": {
-    "@ournet/images-domain": "^0.1.0",
-    "cors": "^2.8.4",
-    "debug": "^3.1.0",
-    "dotenv": "^4.0.0",
-    "express": "^4.15.2",
-    "got": "^9.2.2",
-    "sharp": "^0.20.8",
-    "winston": "^3.1.0"
+    "@ournet/images-domain": "^0.1.1",
+    "cors": "^2.8.5",
+    "debug": "^4.1.0",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "got": "^9.3.2",
+    "ournet.logger": "^0.1.0",
+    "sharp": "^0.21.0"
   }
 }
