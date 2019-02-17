@@ -32,6 +32,8 @@ export default (quote: Quote) => {
 
     const ournetLink = getHost('news', quote.country);
 
+    const newsText = quote.events && quote.events.length && quote.events[quote.events.length-1].title || quote.source.title;
+
     return `
     <html>
         <head>
@@ -218,7 +220,7 @@ export default (quote: Quote) => {
                 </div>
             </div>
             <div id="news">
-                <span>—</span> ${truncateText(quote.source.title, 120)}
+                <span>—</span> ${truncateText(newsText, 120)}
             </div>
             <a id='ournet-link'>${ournetLink}</a>
         </div>
