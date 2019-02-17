@@ -5,6 +5,8 @@ import { Readable } from 'stream';
 
 if (process.platform === 'win32') {
     setCommant('F:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe');
+} else {
+    setCommant('/usr/local/bin/wkhtmltoimage');
 }
 
 export function generateImage(quote: Quote, format: ImageFormat): Readable {
