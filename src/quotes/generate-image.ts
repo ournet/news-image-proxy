@@ -12,7 +12,7 @@ if (process.platform === 'win32') {
 export function generateImage(quote: Quote, format: ImageFormat): Readable {
     const html = formatImage(quote);
 
-    return wkHtmlToImage(html, { format, width: 640 });
+    return wkHtmlToImage(html, { format, width: 640, quality: format === 'png' ? 10 : 95 });
 }
 
 export type ImageFormat = 'png' | 'jpg';
