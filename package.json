@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@ournet/api-client": "^0.3.x",
-    "@ournet/images-domain": "^0.1.x",
+    "@ournet/images-domain": "^0.1.4",
     "boom": "^7.3.0",
     "cors": "^2.8.5",
     "debug": "^4.1.0",

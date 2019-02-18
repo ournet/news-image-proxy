@@ -67,7 +67,7 @@
     lru-cache "^5.1.1"
     node-fetch "^2.3.0"
 
-"@ournet/domain@^0.3.3":
+"@ournet/domain@~0.x.x":
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/@ournet/domain/-/domain-0.3.4.tgz#59a8fb3c13a38b3a82601e9c3fbde40eee9d7c93"
   integrity sha512-PNpVFhgtOlgQGeRkjQWZjBkbP7edHzX6LZRNteXk2/sjO55kg/Bf7JahbxywZ6K+WQsjWpbUJgtHHHS7aoqaAQ==
@@ -77,12 +77,12 @@
     joi "^14.0.3"
     normalize-url "^3.2.0"
 
-"@ournet/images-domain@^0.1.x":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@ournet/images-domain/-/images-domain-0.1.2.tgz#9af9534f8e6bd848d626524344790163e7cefa99"
-  integrity sha512-CI5NKuisnk2NycsmLmEE01jaSAiIfP4viFXa737Z2nmy5XGJcRtlvQ1oGtNdrYKkjzb466G6w7gfzusUFFmtaw==
+"@ournet/images-domain@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@ournet/images-domain/-/images-domain-0.1.4.tgz#866ace09013fc8f1fca5dafe98e427e2a4cbbd30"
+  integrity sha512-sc8tZ0VM2JoLI+Dw85BBehvHAIyIC1eLF6GZfrVvl2rzSfqz9IjayWRECyAj16XlVddbbWBtF8LBuxUZVw31GA==
   dependencies:
-    "@ournet/domain" "^0.3.3"
+    "@ournet/domain" "~0.x.x"
     joi "^14.0.6"
 
 "@sindresorhus/is@^0.14.0":
