@@ -41,16 +41,23 @@ export default (req: Request, res: Response, next: NextFunction) => {
     }
   }
 
-  return sendImage(stream.pipe(instance), res, format);
+  return sendImage(stream.pipe(instance), res, format, true);
 };
 
-function sendImage(stream: Duplex, res: Response, format: ImageFormat) {
-  res.setHeader("content-type", ImageFormatHelper.getMimeByFormat(format));
-  res.setHeader("cache-control", "public,max-age=5184000"); // 60 days
+function sendImage(
+  stream: Duplex,
+  res: Response,
+  format: ImageFormat,
+  isChanged: boolean = false
+) {
+  res.setHeader("Content-Type", ImageFormatHelper.getMimeByFormat(format));
+  res.setHeader("Cache-Control", "public, max-age=2592000"); // 30 days
 
-  stream.on("data", chunk => {
-    res.setHeader("content-length", chunk.length);
-  });
+  if (isChanged) {
+    stream.on("data", chunk => {
+      res.setHeader("content-length", chunk.length);
+    });
+  }
 
   stream.pipe(res, { end: true });
 }
