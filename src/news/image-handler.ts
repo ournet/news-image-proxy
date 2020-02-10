@@ -7,7 +7,7 @@ import {
   ImageFormat
 } from "@ournet/images-domain";
 import * as sharp from "sharp";
-import * as got from "got";
+import got from "got";
 import { Duplex } from "stream";
 
 const masterSizeName = getImageMasterSizeName();

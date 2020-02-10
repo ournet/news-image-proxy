@@ -51,12 +51,11 @@
   "devDependencies": {
     "@types/boom": "^7.2.1",
     "@types/express": "^4.16.0",
-    "@types/got": "^9.2.0",
     "@types/node": "^10.12.7",
-    "@types/sharp": "^0.21.0",
+    "@types/sharp": "^0.24.0",
     "npm-watch": "^0.4.0",
     "rimraf": "^2.6.2",
-    "typescript": "3.1.6"
+    "typescript": "^3.7.5"
   },
   "dependencies": {
     "@ournet/api-client": "^0.3.x",
@@ -67,12 +66,12 @@
     "dotenv": "^6.1.0",
     "entipic.url": "^0.1.0",
     "express": "^4.16.4",
-    "got": "^9.3.2",
+    "got": "^10.5.5",
     "is-stream": "^1.1.0",
     "moment": "^2.24.0",
     "ournet.links": "^0.4.12",
     "ournet.logger": "^0.1.0",
-    "sharp": "^0.21.0",
+    "sharp": "^0.24.0",
     "slang": "^0.3.0"
   }
 }
