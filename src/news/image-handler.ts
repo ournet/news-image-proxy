@@ -43,10 +43,16 @@ export default (req: Request, res: Response, next: NextFunction) => {
 
 function sendImage(stream: Duplex, res: Response, format: ImageFormat) {
   res.setHeader("Content-Type", ImageFormatHelper.getMimeByFormat(format));
-  res.setHeader("Cache-Control", "public, max-age=5184000"); // 30 days
+  res.setHeader("Cache-Control", "public, max-age=5184000"); // 60 days
+  let length = 0;
   stream.on("data", chunk => {
-    res.setHeader("content-length", chunk.length);
+    length += chunk.length;
+    res.setHeader("content-length", length);
   });
+
+  res.removeHeader("accept-ranges");
+  res.removeHeader("etag");
+  res.removeHeader("server");
 
   stream.pipe(res);
 }
