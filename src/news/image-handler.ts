@@ -45,7 +45,6 @@ const handleResponse = (
 
   if (format === originalFormat && size === masterSizeName) {
     response.headers["cache-control"] = CACHE_CONTROL_VALUE;
-    console.log(`sending original image`, response.headers);
     res.writeHead(response.statusCode || 200, response.headers);
     return response.pipe(res);
   }
@@ -70,8 +69,6 @@ export default (req: Request, res: Response, next: NextFunction) => {
   const id = req.params.id as string;
   const format = req.params.format as ImageFormat;
   const size = req.params.size as ImageSizeName;
-
-  console.log(`request`, req.path);
 
   const originalFormat = ImageFormatHelper.getFormatById(id);
 
