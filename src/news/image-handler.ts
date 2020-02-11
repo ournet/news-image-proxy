@@ -71,6 +71,8 @@ export default (req: Request, res: Response, next: NextFunction) => {
   const format = req.params.format as ImageFormat;
   const size = req.params.size as ImageSizeName;
 
+  console.log(`request`, req.path);
+
   const originalFormat = ImageFormatHelper.getFormatById(id);
 
   const url = `http://s3.eu-central-1.amazonaws.com/news.ournetcdn.net/${req.params.folder}/${req.params.prefix}/${masterSizeName}/${id}.${originalFormat}`;
