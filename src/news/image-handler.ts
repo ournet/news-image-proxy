@@ -77,7 +77,7 @@ export default (req: Request, res: Response, next: NextFunction) => {
 
   const host = "s3.eu-central-1.amazonaws.com";
 
-  const path = `news.ournetcdn.net/${req.params.folder}/${req.params.prefix}/${masterSizeName}/${id}.${originalFormat}`;
+  const path = `/news.ournetcdn.net/${req.params.folder}/${req.params.prefix}/${masterSizeName}/${id}.${originalFormat}`;
 
   const options = { timeout: 3000, method: "GET", host, path };
 
