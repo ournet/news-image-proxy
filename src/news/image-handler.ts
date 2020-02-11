@@ -45,6 +45,7 @@ const handleResponse = (
 
   if (format === originalFormat && size === masterSizeName) {
     response.headers["cache-control"] = CACHE_CONTROL_VALUE;
+    console.log(`sending original image`, response.headers);
     res.writeHead(response.statusCode || 200, response.headers);
     return response.pipe(res);
   }
