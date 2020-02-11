@@ -25,9 +25,6 @@ export default (req: Request, res: Response, next: NextFunction) => {
     .stream(url, { timeout: 3000 })
     .on("error", (error: any) => next(error));
 
-  if (format === originalFormat && size === masterSizeName) {
-    return sendImage(stream, res, format, true);
-  }
   let instance = sharp();
   if (format !== originalFormat) {
     instance = instance.toFormat(format);
@@ -41,22 +38,15 @@ export default (req: Request, res: Response, next: NextFunction) => {
     }
   }
 
-  return sendImage(stream.pipe(instance), res, format, false);
+  return sendImage(stream.pipe(instance), res, format);
 };
 
-function sendImage(
-  stream: Duplex,
-  res: Response,
-  format: ImageFormat,
-  isOriginal: boolean
-) {
-  if (!isOriginal) {
-    res.setHeader("Content-Type", ImageFormatHelper.getMimeByFormat(format));
-    res.setHeader("Cache-Control", "public, max-age=5184000"); // 30 days
-    stream.on("data", chunk => {
-      res.setHeader("content-length", chunk.length);
-    });
-  }
+function sendImage(stream: Duplex, res: Response, format: ImageFormat) {
+  res.setHeader("Content-Type", ImageFormatHelper.getMimeByFormat(format));
+  res.setHeader("Cache-Control", "public, max-age=5184000"); // 30 days
+  stream.on("data", chunk => {
+    res.setHeader("content-length", chunk.length);
+  });
 
   stream.pipe(res);
 }
