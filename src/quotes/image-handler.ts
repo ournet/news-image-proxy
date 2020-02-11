@@ -26,7 +26,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
 function sendImage(stream: Stream, res: Response, format: ImageFormat) {
   res.setHeader("content-type", getContentType(format));
-  res.setHeader("cache-control", "public, max-age=5184000"); // 60 days
+  res.setHeader("cache-control", "public,max-age=5184000"); // 60 days
 
   stream.on("data", chunk => {
     res.setHeader("content-length", chunk.length);

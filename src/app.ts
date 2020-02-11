@@ -36,9 +36,9 @@ async function start() {
   await server.listen(PORT);
 }
 
-process.on("unhandledRejection", function(error: Error) {
-  logger.error("unhandledRejection: " + error.message, error);
-});
+// process.on("unhandledRejection", function(error: Error) {
+//   logger.error("unhandledRejection: " + error.message, error);
+// });
 
 process.on("uncaughtException", function(error: Error) {
   logger.error("uncaughtException: " + error.message, error);

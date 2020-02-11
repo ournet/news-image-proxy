@@ -75,11 +75,13 @@ export default (req: Request, res: Response, next: NextFunction) => {
 
   const originalFormat = ImageFormatHelper.getFormatById(id);
 
-  const url = `http://s3.eu-central-1.amazonaws.com/news.ournetcdn.net/${req.params.folder}/${req.params.prefix}/${masterSizeName}/${id}.${originalFormat}`;
+  const host = "s3.eu-central-1.amazonaws.com";
 
-  const options = { timeout: 3000, method: "GET" };
+  const path = `news.ournetcdn.net/${req.params.folder}/${req.params.prefix}/${masterSizeName}/${id}.${originalFormat}`;
+
+  const options = { timeout: 3000, method: "GET", host, path };
 
   http
-    .get(url, options, handleResponse(originalFormat, format, size, res))
+    .get(options, handleResponse(originalFormat, format, size, res))
     .on("error", (error: any) => next(error));
 };
