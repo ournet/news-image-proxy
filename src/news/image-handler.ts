@@ -41,12 +41,15 @@ const handleResponse = (
   size: ImageSizeName,
   res: Response
 ) => (response: http.IncomingMessage) => {
-  headersToDelete.forEach(header => delete response.headers[header]);
+  headersToDelete.forEach(header => {
+    delete response.headers[header];
+  });
 
   if (format === originalFormat && size === masterSizeName) {
     response.headers["cache-control"] = CACHE_CONTROL_VALUE;
     res.writeHead(response.statusCode || 200, response.headers);
-    return response.pipe(res);
+    response.pipe(res);
+    return;
   }
 
   let instance = sharp();
@@ -62,7 +65,7 @@ const handleResponse = (
     }
   }
 
-  return sendImage(response.pipe(instance), res, format);
+  sendImage(response.pipe(instance), res, format);
 };
 
 export default (req: Request, res: Response, next: NextFunction) => {
