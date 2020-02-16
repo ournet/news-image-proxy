@@ -4,7 +4,7 @@ import formatImage from './formatters/v1';
 import { Readable } from 'stream';
 
 if (process.platform === 'win32') {
-    setCommant('F:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe');
+    setCommant('C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe');
 } else {
     setCommant('/usr/local/bin/wkhtmltoimage');
 }

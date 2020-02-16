@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { ImageFormat, generateImage } from "./generate-image";
 import { ournetAPI } from "../data";
 import { Quote, QuoteStringFields } from "@ournet/api-client";
-import { Stream } from "stream";
+import { Readable } from "stream";
 import { notFound } from "boom";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
@@ -24,15 +24,11 @@ export default async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-function sendImage(stream: Stream, res: Response, format: ImageFormat) {
+function sendImage(stream: Readable, res: Response, format: ImageFormat) {
   res.setHeader("content-type", getContentType(format));
   res.setHeader("cache-control", "public,max-age=5184000"); // 60 days
 
-  stream.on("data", chunk => {
-    res.setHeader("content-length", chunk.length);
-  });
-
-  stream.pipe(res, { end: true });
+  stream.pipe(res);
 }
 
 function getContentType(format: ImageFormat) {
