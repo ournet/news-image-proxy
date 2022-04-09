@@ -67,7 +67,7 @@
     "entipic.url": "^0.1.0",
     "express": "^4.16.4",
     "is-stream": "^1.1.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ournet.links": "^0.4.12",
     "ournet.logger": "^0.1.0",
     "sharp": "^0.22.0",
