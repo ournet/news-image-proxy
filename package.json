@@ -65,7 +65,7 @@
     "debug": "^4.1.0",
     "dotenv": "^6.1.0",
     "entipic.url": "^0.1.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "is-stream": "^1.1.0",
     "moment": "^2.24.0",
     "ournet.links": "^0.4.12",
