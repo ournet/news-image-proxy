@@ -1,5 +1,5 @@
 {
-    "script": "./lib/app.js",
-    "max_memory_restart": "200M",
-    "name": "ournet-image-proxy"
+  "script": "./lib/app.js",
+  "max_memory_restart": "200M",
+  "name": "ournet-image-proxy"
 }

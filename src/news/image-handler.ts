@@ -17,7 +17,7 @@ const sendImage = (stream: Duplex, res: Response, format: ImageFormat) => {
   res.setHeader("content-type", ImageFormatHelper.getMimeByFormat(format));
   res.setHeader("cache-control", CACHE_CONTROL_VALUE); // 60 days
   let length = 0;
-  stream.on("data", chunk => {
+  stream.on("data", (chunk) => {
     length += chunk.length;
     res.setHeader("content-length", length);
   });
@@ -35,38 +35,40 @@ const headersToDelete = [
   "last-modified"
 ];
 
-const handleResponse = (
-  originalFormat: ImageFormat,
-  format: ImageFormat,
-  size: ImageSizeName,
-  res: Response
-) => (response: http.IncomingMessage) => {
-  headersToDelete.forEach(header => {
-    delete response.headers[header];
-  });
+const handleResponse =
+  (
+    originalFormat: ImageFormat,
+    format: ImageFormat,
+    size: ImageSizeName,
+    res: Response
+  ) =>
+  (response: http.IncomingMessage) => {
+    headersToDelete.forEach((header) => {
+      delete response.headers[header];
+    });
 
-  if (format === originalFormat && size === masterSizeName) {
-    response.headers["cache-control"] = CACHE_CONTROL_VALUE;
-    res.writeHead(response.statusCode || 200, response.headers);
-    response.pipe(res);
-    return;
-  }
-
-  let instance = sharp();
-  if (format !== originalFormat) {
-    instance = instance.toFormat(format);
-  }
-  if (size !== masterSizeName) {
-    const newSize = getImageSizeByName(size);
-    if (size === "square") {
-      instance = instance.resize(newSize, newSize);
-    } else {
-      instance = instance.resize(newSize);
+    if (format === originalFormat && size === masterSizeName) {
+      response.headers["cache-control"] = CACHE_CONTROL_VALUE;
+      res.writeHead(response.statusCode || 200, response.headers);
+      response.pipe(res);
+      return;
     }
-  }
 
-  sendImage(response.pipe(instance), res, format);
-};
+    let instance = sharp();
+    if (format !== originalFormat) {
+      instance = instance.toFormat(format);
+    }
+    if (size !== masterSizeName) {
+      const newSize = getImageSizeByName(size);
+      if (size === "square") {
+        instance = instance.resize(newSize, newSize);
+      } else {
+        instance = instance.resize(newSize);
+      }
+    }
+
+    sendImage(response.pipe(instance), res, format);
+  };
 
 export default (req: Request, res: Response, next: NextFunction) => {
   const id = req.params.id as string;

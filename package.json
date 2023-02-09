@@ -69,8 +69,8 @@
     "is-stream": "^1.1.0",
     "moment": "^2.24.0",
     "ournet.links": "^0.4.12",
-    "ournet.logger": "^0.1.0",
-    "sharp": "^0.22.0",
-    "slang": "^0.3.0"
+    "sharp": "^0.28.3",
+    "slang": "^0.3.0",
+    "wkhtmltoimage": "^0.1.5"
   }
 }

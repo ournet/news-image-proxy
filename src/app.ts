@@ -40,12 +40,12 @@ async function start() {
 //   logger.error("unhandledRejection: " + error.message, error);
 // });
 
-process.on("uncaughtException", function(error: Error) {
+process.on("uncaughtException", function (error: Error) {
   logger.error("uncaughtException: " + error.message, error);
 });
 
 start()
   .then(() => logger.warn(`Listening at ${PORT}`))
-  .catch(e => {
+  .catch((e) => {
     logger.error(e);
   });
