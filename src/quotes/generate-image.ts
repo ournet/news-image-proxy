@@ -1,10 +1,7 @@
-import { wkHtmlToImage, setCommant } from "./wkhtmltoimage";
+import { wkHtmlToImage } from "./wkhtmltoimage";
 import { Quote } from "@ournet/api-client";
 import formatImage from "./formatters/v1";
 import { Readable } from "stream";
-import { join } from "path";
-
-setCommant(join(__dirname, "/bin/wkhtmltoimage"));
 
 export function generateImage(quote: Quote, format: ImageFormat): Readable {
   const html = formatImage(quote);
